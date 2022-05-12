@@ -5,7 +5,6 @@ import {
   IconButton,
   Button,
   Typography,
-  Grid,
   Stack,
 } from '@mui/material';
 import React from 'react';
@@ -17,6 +16,7 @@ function Header() {
       <AppBar>
         <Toolbar>
           <IconButton
+            href="/"
             size="large"
             edge="start"
             color="inherit"
@@ -46,23 +46,6 @@ function Header() {
           </Stack>
         </Toolbar>
       </AppBar>
-      <Box>
-        <Grid
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justifyContent="center"
-          pt={20}
-          pb={10}
-        >
-          <Grid item xs={3}>
-            <Typography variant="h1" component="span">
-              The Rick and Morty API
-            </Typography>
-          </Grid>
-        </Grid>
-      </Box>
     </Box>
   );
 }

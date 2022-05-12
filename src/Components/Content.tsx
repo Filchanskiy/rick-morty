@@ -5,6 +5,7 @@ import {
   CardMedia,
   Grid,
   Typography,
+  Link,
 } from '@mui/material';
 import React from 'react';
 
@@ -19,20 +20,36 @@ function Content() {
             image="https://rickandmortyapi.com/api/character/avatar/110.jpeg"
             alt="Eli"
           />
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box
+            sx={{ display: 'flex', flexDirection: 'column', typography: 'h6' }}
+          >
             <CardContent sx={{ flex: '1 0 auto' }}>
-              <Typography component="div" variant="h6">
+              <Link href="/person" color="inherit" underline="none">
                 Eli
-              </Typography>
-              <Typography variant="h6" component="div">
+              </Link>
+              <Typography variant="h6" component="div" sx={{ mb: 1.5 }}>
                 Alive - Human
               </Typography>
               <Typography color="text.secondary">
                 Last known location:
               </Typography>
-              <Typography sx={{ mb: 1.5 }}>Post-Apocalyptic Earth</Typography>
+              <Link
+                href="/location"
+                color="inherit"
+                underline="none"
+                sx={{ mb: 1.5 }}
+              >
+                Post-Apocalyptic Earth
+              </Link>
               <Typography color="text.secondary">First seen in:</Typography>
-              <Typography sx={{ mb: 1.5 }}>Rickmancing the Stone</Typography>
+              <Link
+                href="/episode"
+                color="inherit"
+                underline="none"
+                sx={{ mb: 1.5 }}
+              >
+                Rickmancing the Stone
+              </Link>
             </CardContent>
           </Box>
         </Card>
@@ -45,20 +62,36 @@ function Content() {
             image="https://rickandmortyapi.com/api/character/avatar/288.jpeg"
             alt="Rick D716-B"
           />
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box
+            sx={{ display: 'flex', flexDirection: 'column', typography: 'h6' }}
+          >
             <CardContent sx={{ flex: '1 0 auto' }}>
-              <Typography component="div" variant="h6">
+              <Link href="/person" color="inherit" underline="none">
                 Rick D716-B
-              </Typography>
-              <Typography variant="h6" component="div">
+              </Link>
+              <Typography variant="h6" component="div" sx={{ mb: 1.5 }}>
                 Alive - Human
               </Typography>
               <Typography color="text.secondary">
                 Last known location:
               </Typography>
-              <Typography sx={{ mb: 1.5 }}>Citadel of Ricks</Typography>
+              <Link
+                href="/location"
+                color="inherit"
+                underline="none"
+                sx={{ mb: 1.5 }}
+              >
+                Citadel of Ricks
+              </Link>
               <Typography color="text.secondary">First seen in:</Typography>
-              <Typography sx={{ mb: 1.5 }}>The Ricklantis Mixup</Typography>
+              <Link
+                href="/episode"
+                color="inherit"
+                underline="none"
+                sx={{ mb: 1.5 }}
+              >
+                The Ricklantis Mixup
+              </Link>
             </CardContent>
           </Box>
         </Card>
@@ -71,12 +104,14 @@ function Content() {
             image="https://rickandmortyapi.com/api/character/avatar/320.jpeg"
             alt="Shnoopy Bloopers"
           />
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box
+            sx={{ display: 'flex', flexDirection: 'column', typography: 'h6' }}
+          >
             <CardContent sx={{ flex: '1 0 auto' }}>
-              <Typography component="div" variant="h6">
+              <Link href="/" color="inherit" underline="none">
                 Shnoopy Bloopers
-              </Typography>
-              <Typography variant="h6" component="div">
+              </Link>
+              <Typography variant="h6" component="div" sx={{ mb: 1.5 }}>
                 Unknown - Alien
               </Typography>
               <Typography color="text.secondary">
@@ -99,12 +134,14 @@ function Content() {
             image="https://rickandmortyapi.com/api/character/avatar/592.jpeg"
             alt="Phoenixperson"
           />
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box
+            sx={{ display: 'flex', flexDirection: 'column', typography: 'h6' }}
+          >
             <CardContent sx={{ flex: '1 0 auto' }}>
-              <Typography component="div" variant="h6">
+              <Link href="/" color="inherit" underline="none">
                 Phoenixperson
-              </Typography>
-              <Typography variant="h6" component="div">
+              </Link>
+              <Typography variant="h6" component="div" sx={{ mb: 1.5 }}>
                 Dead - Alien
               </Typography>
               <Typography color="text.secondary">
@@ -129,12 +166,14 @@ function Content() {
             image="https://rickandmortyapi.com/api/character/avatar/532.jpeg"
             alt="Tony’s Wife"
           />
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box
+            sx={{ display: 'flex', flexDirection: 'column', typography: 'h6' }}
+          >
             <CardContent sx={{ flex: '1 0 auto' }}>
-              <Typography component="div" variant="h6">
+              <Link href="/" color="inherit" underline="none">
                 Tony’s Wife
-              </Typography>
-              <Typography variant="h6" component="div">
+              </Link>
+              <Typography variant="h6" component="div" sx={{ mb: 1.5 }}>
                 Dead - Alien
               </Typography>
               <Typography color="text.secondary">
@@ -155,12 +194,14 @@ function Content() {
             image="https://rickandmortyapi.com/api/character/avatar/425.jpeg"
             alt="Pizza-person"
           />
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Box
+            sx={{ display: 'flex', flexDirection: 'column', typography: 'h6' }}
+          >
             <CardContent sx={{ flex: '1 0 auto' }}>
-              <Typography component="div" variant="h6">
+              <Link href="/" color="inherit" underline="none">
                 Pizza-person
-              </Typography>
-              <Typography variant="h6" component="div">
+              </Link>
+              <Typography variant="h6" component="div" sx={{ mb: 1.5 }}>
                 Alive - Humanoid
               </Typography>
               <Typography color="text.secondary">
