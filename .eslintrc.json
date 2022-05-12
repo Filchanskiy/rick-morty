@@ -27,7 +27,10 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "react/jsx-one-expression-per-line": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+        "import/prefer-default-export": "off",
+        "object-curly-newline": "off",
         "import/extensions": [
             "error",
             "ignorePackages",
