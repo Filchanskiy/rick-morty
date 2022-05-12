@@ -1,15 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import MainPage from './MainPage/MainPage';
+import PersonPage from './PersonPage/PersonPage';
+import LocationPage from './LocationPage/LocationPage';
+import EpisodePage from './EpisodePage/EpisodePage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
   <React.StrictMode>
-    <MainPage />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/person" element={<PersonPage />} />
+        <Route path="/location" element={<LocationPage />} />
+        <Route path="/episode" element={<EpisodePage />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
 );
 
