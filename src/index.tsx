@@ -7,6 +7,7 @@ import MainPage from './MainPage/MainPage';
 import PersonPage from './PersonPage/PersonPage';
 import LocationPage from './LocationPage/LocationPage';
 import EpisodePage from './EpisodePage/EpisodePage';
+import NotFoundInfo from './NotFoundInfo/NotFoundInfo';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -16,9 +17,10 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/person" element={<PersonPage />} />
-        <Route path="/location" element={<LocationPage />} />
-        <Route path="/episode" element={<EpisodePage />} />
+        <Route path="/character/:id" element={<PersonPage />} />
+        <Route path="/location/:id" element={<LocationPage />} />
+        <Route path="/episode/:id" element={<EpisodePage />} />
+        <Route path="*" element={<NotFoundInfo />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
