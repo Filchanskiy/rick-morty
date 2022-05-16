@@ -5,16 +5,101 @@ import {
   CardMedia,
   Container,
   Grid,
+  Link,
   Typography,
 } from '@mui/material';
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
+import { parseId } from '../utils';
+
+export interface OriginOrLocation {
+  name: string;
+  url: string;
+}
+export interface ResultsEntity {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: OriginOrLocation;
+  location: OriginOrLocation;
+  image: string;
+  episode?: string[] | null;
+  url: string;
+  created: string;
+}
 
 function PersonPage() {
-  const character = JSON.parse(
-    '{"id":288,"name":"Rick D716-B","status":"Alive","species":"Human","type":"","gender":"Male","origin":{"name":"Earth (D716-B)","url":"https://rickandmortyapi.com/api/location/60"},"location":{"name":"Citadel of Ricks","url":"https://rickandmortyapi.com/api/location/3"},"image":"https://rickandmortyapi.com/api/character/avatar/288.jpeg","episode":["https://rickandmortyapi.com/api/episode/28"],"url":"https://rickandmortyapi.com/api/character/288","created":"2017-12-31T19:55:25.101Z"}',
-  );
+  const { id } = useParams();
+  const [character, setCharacter] = useState<ResultsEntity>();
+  axios.get(`https://rickandmortyapi.com/api/character/${id}`).then((res) => {
+    const { data } = res;
+    setCharacter(data);
+  });
+  if (character === undefined) {
+    return <div>loading...</div>;
+  }
+  // eslint-disable-next-line arrow-body-style
+  const renderOfCharacter = () => {
+    return (
+      <Grid item xs={12} md={8}>
+        <Card sx={{ display: 'flex' }}>
+          <CardMedia
+            component="img"
+            sx={{ width: 450 }}
+            image={character.image}
+            alt={character.name}
+          />
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              typography: 'p',
+            }}
+          >
+            <CardContent sx={{ flex: '1 0 auto' }}>
+              <Typography>
+                <i>Сharacter `s name:</i> {character.name}
+              </Typography>
+              <Typography>
+                <i>Status:</i> {character.status}
+              </Typography>
+              <Typography>
+                <i>Species:</i> {character.species}
+              </Typography>
+              <Typography>
+                <i>Gender:</i> {character.gender}
+              </Typography>
+              <Typography>
+                <i>Created in:</i> {character.created.slice(0, 10)}
+              </Typography>
+              <Typography>---------</Typography>
+              <Link
+                href={`/location/${parseId(character.location.url)}`}
+                color="inherit"
+                underline="none"
+              >
+                <i>Location:</i> {character.location.name}
+              </Link>
+              <Typography>---------</Typography>
+              <Link
+                href={`/episode/${parseId(character.origin.url)}`}
+                color="inherit"
+                underline="none"
+              >
+                <i>Origin:</i> {character.origin.name}
+              </Link>
+            </CardContent>
+          </Box>
+        </Card>
+      </Grid>
+    );
+  };
   return (
     <Container>
       <Header />
@@ -24,47 +109,7 @@ function PersonPage() {
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ mt: 10 }}
       >
-        <Grid item xs={12} md={8}>
-          <Card sx={{ display: 'flex' }}>
-            <CardMedia
-              component="img"
-              sx={{ width: 450 }}
-              image={character.image}
-              alt={character.name}
-            />
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                typography: 'h6',
-              }}
-            >
-              <CardContent sx={{ flex: '1 0 auto' }}>
-                <Typography>
-                  <i>Сharacter `s name:</i> {character.name}
-                </Typography>
-                <Typography>
-                  <i>Status:</i> {character.status}
-                </Typography>
-                <Typography>
-                  <i>Species:</i> {character.species}
-                </Typography>
-                <Typography>
-                  <i>Gender:</i> {character.gender}
-                </Typography>
-                <Typography>
-                  <i>Origin:</i> {character.origin.name}
-                </Typography>
-                <Typography>
-                  <i>Location:</i> {character.location.name}
-                </Typography>
-                <Typography>
-                  <i>Created in:</i> {character.created.slice(0, 10)}
-                </Typography>
-              </CardContent>
-            </Box>
-          </Card>
-        </Grid>
+        {renderOfCharacter()}
       </Grid>
       <Footer />
     </Container>
