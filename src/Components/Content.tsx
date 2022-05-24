@@ -6,9 +6,13 @@ import {
   Grid,
   Typography,
   Link,
+  Pagination,
+  Container,
+  PaginationItem,
 } from '@mui/material';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link as NavLink } from 'react-router-dom';
 import { parseId } from '../utils';
 
 export interface Info {
@@ -40,15 +44,21 @@ export interface GetCharactersResponse {
   results: ResultsEntity[];
 }
 
+const BASE_URL = 'https://rickandmortyapi.com/api/character';
 function Content() {
   const [characters, setCharacters] = useState<ResultsEntity[]>([]);
-  axios.get('https://rickandmortyapi.com/api/character').then((res) => {
-    const { data } = res;
-    setCharacters(data.results);
+  const [page, setPage] = useState(1);
+  const [pageQty, setPageQty] = useState(0);
+  useEffect(() => {
+    axios.get(`${BASE_URL}?page=${page}`).then((res) => {
+      const { data } = res;
+      setCharacters(data.results);
+      setPageQty(data.info.pages);
+    });
   });
   // eslint-disable-next-line arrow-body-style
   const renderCharacters = () => {
-    return characters.slice(0, 6).map((character) => (
+    return characters.slice(0, 20).map((character) => (
       <Grid item xs={12} md={6}>
         <Card sx={{ display: 'flex' }}>
           <CardMedia
@@ -102,9 +112,27 @@ function Content() {
     ));
   };
   return (
-    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      {renderCharacters()}
-    </Grid>
+    <Container>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        {renderCharacters()}
+      </Grid>
+      <Pagination
+        count={pageQty}
+        page={page}
+        onChange={(_, num) => setPage(num)}
+        showFirstButton
+        showLastButton
+        sx={{ marginY: 3, marginX: 'auto' }}
+        renderItem={(item) => (
+          <PaginationItem
+            component={NavLink}
+            to={`/?page=${item.page}`}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...item}
+          />
+        )}
+      />
+    </Container>
   );
 }
 export default Content;
