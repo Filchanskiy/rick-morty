@@ -58,7 +58,7 @@ function Content() {
   });
   // eslint-disable-next-line arrow-body-style
   const renderCharacters = () => {
-    return characters.slice(0, 20).map((character) => (
+    return characters.slice(0, 6).map((character) => (
       <Grid item xs={12} md={6}>
         <Card sx={{ display: 'flex' }}>
           <CardMedia
