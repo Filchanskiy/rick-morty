@@ -69,6 +69,8 @@ function LocationPage() {
       <Grid
         container
         rowSpacing={1}
+        alignItems="center"
+        justifyContent="center"
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ mt: 10 }}
       >
