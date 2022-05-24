@@ -7,7 +7,7 @@ import MainPage from './MainPage/MainPage';
 import PersonPage from './PersonPage/PersonPage';
 import LocationPage from './LocationPage/LocationPage';
 import EpisodePage from './EpisodePage/EpisodePage';
-import NotFoundInfo from './NotFoundInfo/NotFoundInfo';
+import NotFoundInfoPage from './NotFoundInfoPage/NotFoundInfoPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -20,7 +20,7 @@ root.render(
         <Route path="/character/:id" element={<PersonPage />} />
         <Route path="/location/:id" element={<LocationPage />} />
         <Route path="/episode/:id" element={<EpisodePage />} />
-        <Route path="*" element={<NotFoundInfo />} />
+        <Route path="*" element={<NotFoundInfoPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
