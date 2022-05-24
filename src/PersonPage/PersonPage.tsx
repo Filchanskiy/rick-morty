@@ -1,13 +1,20 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import {
   Box,
   Card,
   CardContent,
   CardMedia,
+  Collapse,
   Container,
   Grid,
   Link,
+  List,
+  ListItemButton,
+  ListItemText,
   Typography,
 } from '@mui/material';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -29,21 +36,40 @@ export interface ResultsEntity {
   origin: OriginOrLocation;
   location: OriginOrLocation;
   image: string;
-  episode?: string[] | null;
+  episode: string[];
   url: string;
   created: string;
 }
 
 function PersonPage() {
+  const [open, setOpen] = React.useState(true);
+  const handleClick = () => {
+    setOpen(!open);
+  };
   const { id } = useParams();
   const [character, setCharacter] = useState<ResultsEntity>();
+  const [episodes, setEpisodes] = useState([]);
   axios.get(`https://rickandmortyapi.com/api/character/${id}`).then((res) => {
     const { data } = res;
     setCharacter(data);
+    setEpisodes(data.episode);
   });
   if (character === undefined) {
     return <div>loading...</div>;
   }
+  const renderEpisodes = () =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    episodes.slice(0, 5).map((episode) => (
+      <List>
+        <Link
+          href={`/episode/${parseId(episode)}`}
+          color="inherit"
+          underline="none"
+        >
+          <i>Episode № {parseId(episode)}</i>
+        </Link>
+      </List>
+    ));
   // eslint-disable-next-line arrow-body-style
   const renderOfCharacter = () => {
     return (
@@ -94,6 +120,25 @@ function PersonPage() {
               >
                 <i>Origin:</i> {character.origin.name}
               </Link>
+              <List
+                sx={{
+                  width: '100%',
+                  maxWidth: 360,
+                  bgcolor: 'background.paper',
+                }}
+                component="nav"
+                aria-labelledby="nested-list-subheader"
+              >
+                <ListItemButton onClick={handleClick}>
+                  <ListItemText primary="Episodes" />
+                  {open ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {renderEpisodes()}
+                  </List>
+                </Collapse>
+              </List>
             </CardContent>
           </Box>
         </Card>
@@ -106,6 +151,8 @@ function PersonPage() {
       <Grid
         container
         rowSpacing={1}
+        alignItems="center"
+        justifyContent="center"
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{ mt: 10 }}
       >
