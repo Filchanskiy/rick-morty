@@ -7,7 +7,6 @@ import {
   Typography,
   Link,
   Pagination,
-  Container,
   PaginationItem,
 } from '@mui/material';
 import axios from 'axios';
@@ -60,7 +59,14 @@ function Content() {
   const renderCharacters = () => {
     return characters.slice(0, 6).map((character) => (
       <Grid item xs={12} md={6}>
-        <Card sx={{ display: 'flex' }}>
+        <Card
+          sx={{
+            backgroundColor: '#616161',
+            display: 'flex',
+            border: 2,
+            borderColor: 'skyblue',
+          }}
+        >
           <CardMedia
             component="img"
             sx={{ width: 200 }}
@@ -77,31 +83,32 @@ function Content() {
             <CardContent sx={{ flex: '1 0 auto' }}>
               <Link
                 href={`/character/${character.id}`}
-                color="inherit"
+                color="skyblue"
                 underline="none"
               >
                 {character.name}
               </Link>
-              <Typography variant="h6" component="div" sx={{ mb: 1.5 }}>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ mb: 1.5 }}
+                color="skyblue"
+              >
                 {character.status} - {character.species}
               </Typography>
-              <Typography color="text.secondary">
-                Last known location:
-              </Typography>
+              <Typography color="skyblue">Last known location:</Typography>
               <Link
                 href={`/location/${parseId(character.location.url)}`}
-                color="inherit"
+                color="skyblue"
                 underline="none"
-                sx={{ mb: 1.5 }}
               >
                 {character.location.name}
               </Link>
-              <Typography color="text.secondary">First seen in:</Typography>
+              <Typography color="skyblue">First seen in:</Typography>
               <Link
                 href={`/episode/${parseId(character.origin.url)}`}
-                color="inherit"
+                color="skyblue"
                 underline="none"
-                sx={{ mb: 1.5 }}
               >
                 {character.origin.name}
               </Link>
@@ -112,17 +119,28 @@ function Content() {
     ));
   };
   return (
-    <Container>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    <Box sx={{ backgroundColor: '#212121', mt: 3 }}>
+      <Grid
+        container
+        rowSpacing={3}
+        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        sx={{ pt: 1, pb: 2, px: 15 }}
+      >
         {renderCharacters()}
       </Grid>
+
       <Pagination
+        color="primary"
+        variant="text"
+        sx={{
+          color: 'skyblue',
+          marginX: 'auto',
+        }}
         count={pageQty}
         page={page}
         onChange={(_, num) => setPage(num)}
         showFirstButton
         showLastButton
-        sx={{ marginY: 3, marginX: 'auto' }}
         renderItem={(item) => (
           <PaginationItem
             component={NavLink}
@@ -132,7 +150,7 @@ function Content() {
           />
         )}
       />
-    </Container>
+    </Box>
   );
 }
 export default Content;

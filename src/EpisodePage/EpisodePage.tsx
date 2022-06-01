@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Card,
-  CardContent,
-  Container,
-  Grid,
-  Typography,
-} from '@mui/material';
+import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../Components/Header';
@@ -36,7 +29,14 @@ function EpisodePage() {
   const renderOfEpisode = () => {
     return (
       <Grid item xs={12} md={8}>
-        <Card sx={{ display: 'flex' }}>
+        <Card
+          sx={{
+            border: 2,
+            bgcolor: '#616161',
+            display: 'flex',
+            color: 'skyblue',
+          }}
+        >
           <Box
             sx={{
               display: 'flex',
@@ -64,7 +64,7 @@ function EpisodePage() {
     );
   };
   return (
-    <Container>
+    <>
       <Header />
       <Grid
         container
@@ -72,12 +72,12 @@ function EpisodePage() {
         alignItems="center"
         justifyContent="center"
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        sx={{ mt: 10 }}
+        sx={{ bgcolor: '#212121', pt: 10, pb: 3, px: 50 }}
       >
         {renderOfEpisode()}
       </Grid>
       <Footer />
-    </Container>
+    </>
   );
 }
 export default EpisodePage;

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Container, Grid, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 
 function NotFoundInfo() {
   return (
-    <Container>
+    <>
       <Header />
       <Grid
         container
@@ -22,7 +22,7 @@ function NotFoundInfo() {
         </Grid>
       </Grid>
       <Footer />
-    </Container>
+    </>
   );
 }
 export default NotFoundInfo;

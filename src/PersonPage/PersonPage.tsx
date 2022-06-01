@@ -5,7 +5,6 @@ import {
   CardContent,
   CardMedia,
   Collapse,
-  Container,
   Grid,
   Link,
   List,
@@ -63,7 +62,7 @@ function PersonPage() {
       <List>
         <Link
           href={`/episode/${parseId(episode)}`}
-          color="inherit"
+          color="skyblue"
           underline="none"
         >
           <i>Episode № {parseId(episode)}</i>
@@ -74,7 +73,14 @@ function PersonPage() {
   const renderOfCharacter = () => {
     return (
       <Grid item xs={12} md={8}>
-        <Card sx={{ display: 'flex' }}>
+        <Card
+          sx={{
+            border: 2,
+            bgcolor: '#616161',
+            display: 'flex',
+            color: 'skyblue',
+          }}
+        >
           <CardMedia
             component="img"
             sx={{ width: 450 }}
@@ -86,6 +92,7 @@ function PersonPage() {
               display: 'flex',
               flexDirection: 'column',
               typography: 'p',
+              fontFamily: 'Monospace',
             }}
           >
             <CardContent sx={{ flex: '1 0 auto' }}>
@@ -124,7 +131,6 @@ function PersonPage() {
                 sx={{
                   width: '100%',
                   maxWidth: 360,
-                  bgcolor: 'background.paper',
                 }}
                 component="nav"
                 aria-labelledby="nested-list-subheader"
@@ -146,7 +152,7 @@ function PersonPage() {
     );
   };
   return (
-    <Container>
+    <>
       <Header />
       <Grid
         container
@@ -154,12 +160,16 @@ function PersonPage() {
         alignItems="center"
         justifyContent="center"
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        sx={{ mt: 10 }}
+        sx={{
+          bgcolor: '#212121',
+          mt: 8,
+          pb: 2,
+        }}
       >
         {renderOfCharacter()}
       </Grid>
       <Footer />
-    </Container>
+    </>
   );
 }
 
