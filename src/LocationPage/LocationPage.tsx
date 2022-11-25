@@ -31,7 +31,8 @@ function LocationPage() {
       <Grid item xs={12} md={8}>
         <Card
           sx={{
-            border: 2,
+            border: 4,
+            borderColor: 'black',
             bgcolor: '#616161',
             display: 'flex',
             color: 'skyblue',
@@ -45,13 +46,13 @@ function LocationPage() {
             }}
           >
             <CardContent sx={{ flex: '1 0 auto' }}>
-              <Typography>
+              <Typography sx={{ mb: 1 }}>
                 <i>Location name:</i> {location.name}
               </Typography>
-              <Typography>
+              <Typography sx={{ mb: 1 }}>
                 <i>Type:</i> {location.type}
               </Typography>
-              <Typography>
+              <Typography sx={{ mb: 1 }}>
                 <i>Dimension:</i> {location.dimension}
               </Typography>
               <Typography>
@@ -72,7 +73,7 @@ function LocationPage() {
         alignItems="center"
         justifyContent="center"
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        sx={{ bgcolor: '#212121', pt: 10, pb: 3, px: 50 }}
+        sx={{ bgcolor: '#37474f', pt: 10, pb: 3, px: 50 }}
       >
         {renderOfLocation()}
       </Grid>

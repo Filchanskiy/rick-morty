@@ -63,13 +63,13 @@ function Content() {
           sx={{
             backgroundColor: '#616161',
             display: 'flex',
-            border: 2,
-            borderColor: 'skyblue',
+            border: 4,
+            borderColor: 'Black',
           }}
         >
           <CardMedia
             component="img"
-            sx={{ width: 200 }}
+            sx={{ borderRight: 4, width: 200 }}
             image={character.image}
             alt={character.name}
           />
@@ -84,7 +84,7 @@ function Content() {
               <Link
                 href={`/character/${character.id}`}
                 color="skyblue"
-                underline="none"
+                underline="hover"
               >
                 {character.name}
               </Link>
@@ -100,15 +100,17 @@ function Content() {
               <Link
                 href={`/location/${parseId(character.location.url)}`}
                 color="skyblue"
-                underline="none"
+                underline="hover"
               >
                 {character.location.name}
               </Link>
-              <Typography color="skyblue">First seen in:</Typography>
+              <Typography color="skyblue" sx={{ mt: 2 }}>
+                First seen in:
+              </Typography>
               <Link
                 href={`/episode/${parseId(character.origin.url)}`}
                 color="skyblue"
-                underline="none"
+                underline="hover"
               >
                 {character.origin.name}
               </Link>
@@ -119,7 +121,7 @@ function Content() {
     ));
   };
   return (
-    <Box sx={{ backgroundColor: '#212121', mt: 3 }}>
+    <Box sx={{ backgroundColor: '#37474f', mt: 3 }}>
       <Grid
         container
         rowSpacing={3}
@@ -128,28 +130,28 @@ function Content() {
       >
         {renderCharacters()}
       </Grid>
-
-      <Pagination
-        color="primary"
-        variant="text"
-        sx={{
-          color: 'skyblue',
-          marginX: 'auto',
-        }}
-        count={pageQty}
-        page={page}
-        onChange={(_, num) => setPage(num)}
-        showFirstButton
-        showLastButton
-        renderItem={(item) => (
-          <PaginationItem
-            component={NavLink}
-            to={`/?page=${item.page}`}
-            // eslint-disable-next-line react/jsx-props-no-spreading
-            {...item}
-          />
-        )}
-      />
+      <Box>
+        <Pagination
+          color="primary"
+          variant="text"
+          sx={{
+            color: 'skyblue',
+          }}
+          count={pageQty}
+          page={page}
+          onChange={(_, num) => setPage(num)}
+          showFirstButton
+          showLastButton
+          renderItem={(item) => (
+            <PaginationItem
+              component={NavLink}
+              to={`/?page=${item.page}`}
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              {...item}
+            />
+          )}
+        />
+      </Box>
     </Box>
   );
 }

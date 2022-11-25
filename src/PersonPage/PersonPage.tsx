@@ -75,15 +75,17 @@ function PersonPage() {
       <Grid item xs={12} md={8}>
         <Card
           sx={{
-            border: 2,
+            border: 4,
+            borderColor: 'black',
             bgcolor: '#616161',
             display: 'flex',
             color: 'skyblue',
+            mx: 10,
           }}
         >
           <CardMedia
             component="img"
-            sx={{ width: 450 }}
+            sx={{ borderRight: 4, borderColor: 'black', width: 400 }}
             image={character.image}
             alt={character.name}
           />
@@ -161,7 +163,7 @@ function PersonPage() {
         justifyContent="center"
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         sx={{
-          bgcolor: '#212121',
+          bgcolor: '#37474f',
           mt: 8,
           pb: 2,
         }}

@@ -43,22 +43,20 @@ function Header() {
           <Typography
             alignItems="center"
             justifyContent="center"
-            flexGrow={1}
+            marginX="auto"
             variant="h6"
             component="span"
             color="secondary"
           >
-            Welcome to our page
+            Welcome to the Rick and Morty page
           </Typography>
           <Stack spacing={2} direction="row">
-            <Button variant="text" color="secondary">
+            <Button
+              variant="text"
+              color="secondary"
+              href="https://rickandmortyapi.com/documentation"
+            >
               Docs
-            </Button>
-            <Button variant="text" color="secondary">
-              About
-            </Button>
-            <Button variant="outlined" color="secondary">
-              Support us
             </Button>
           </Stack>
         </Toolbar>
